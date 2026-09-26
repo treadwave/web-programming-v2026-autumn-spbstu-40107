@@ -1,4 +1,8 @@
 export function analyzieString(str) {
+  if (str === undefined || str === null) {
+    throw new Error('invalid input');
+  }
+
   if (typeof str === 'number') {
     str = str.toString();
   }
