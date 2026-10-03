@@ -9,10 +9,10 @@ export class Library {
   }
 
   removeBook(title) {
-    let obj = this.books.find((book) => book.title === title);
-    let index = this.books.indexOf(obj);
+    const obj = this.books.find((book) => book.title === title);
+    const index = this.books.indexOf(obj);
 
-    if (index != -1) {
+    if (index !== -1) {
       this.books.splice(index, 1);
     }
   }
@@ -23,15 +23,15 @@ export class Library {
 }
 
 export function groupBooksByGenre(libs) {
-  let flatBooks = libs.flatMap((libs) => libs.books);
-  let map = Map.groupBy(flatBooks, (book) => book.genre);
+  const flatBooks = libs.flatMap((lib) => lib.books);
+  const map = Map.groupBy(flatBooks, (book) => book.genre);
 
   return map;
 }
 
 export function uniqueList(libs) {
-  let set = new Set();
-  let flatBooks = libs.flatMap((libs) => libs.books);
+  const set = new Set();
+  const flatBooks = libs.flatMap((lib) => lib.books);
 
   for (const book of flatBooks) {
     set.add(book.author);
@@ -41,15 +41,15 @@ export function uniqueList(libs) {
 }
 
 export function groupByYear(libs) {
-  let flatBooks = libs.flatMap((libs) => libs.books);
-  let map = Map.groupBy(flatBooks, (book) => book.year);
+  const flatBooks = libs.flatMap((lib) => lib.books);
+  const map = Map.groupBy(flatBooks, (book) => book.year);
 
   return map;
 }
 
 export function uniqueYears(libs) {
-  let set = new Set();
-  let flatBooks = libs.flatMap((libs) => libs.books);
+  const set = new Set();
+  const flatBooks = libs.flatMap((lib) => lib.books);
 
   for (const book of flatBooks) {
     set.add(book.year);
@@ -59,8 +59,8 @@ export function uniqueYears(libs) {
 }
 
 export function specificBooksOfAuthor(libs, author) {
-  let booksOfAuthor = [];
-  let flatBooks = libs.flatMap((libs) => libs.books);
+  const booksOfAuthor = [];
+  const flatBooks = libs.flatMap((lib) => lib.books);
 
   for (const book of flatBooks) {
     if (book.author === author) {

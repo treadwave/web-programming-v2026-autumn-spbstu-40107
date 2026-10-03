@@ -28,25 +28,26 @@ function render() {
   for (const lib of libs) {
     const block = document.createElement('section');
     block.className = 'library';
+    block.setAttribute('data-testid', 'entity-card');
 
     block.innerHTML = `
         <h2>${lib.name}</h2>
-        <button type="button" class="delete-library">Удалить библиотеку</button>
+        <button type="button" data-testid="delete-entity">Удалить библиотеку</button>
         `;
 
     for (const book of lib.books) {
       const card = document.createElement('article');
-      card.setAttribute('data-testid', 'entity-card');
+      card.className = 'book-card';
       card.innerHTML = `
             <h3>${book.title}</h3>
             <p>Автор: ${book.author}</p>
             <p>Год: ${book.year}</p>
             <p>Жанр: ${book.genre}</p>
-            <button type="button" data-testid="delete-entity">Удалить</button>
+            <button type="button" data-testid="delete-book">Удалить</button>
             `;
       block.append(card);
 
-      const elem = card.querySelector('[data-testid="delete-entity"]');
+      const elem = card.querySelector('[data-testid="delete-book"]');
 
       elem.addEventListener('click', () => {
         removeBook(book.title, lib);
@@ -58,7 +59,7 @@ function render() {
     option.value = lib.name;
     libSelector.append(option);
 
-    const libElem = block.querySelector('[class="delete-library"]');
+    const libElem = block.querySelector('[data-testid="delete-entity"]');
 
     libElem.addEventListener('click', () => {
       removeLib(lib);
@@ -93,7 +94,7 @@ function addLib(name) {
   });
 }
 
-const libForm = document.querySelector('[data-testid="library-form"]');
+const libForm = document.querySelector('[data-testid="entity-form"]');
 
 libForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -133,13 +134,13 @@ function removeBook(title, lib) {
   });
 }
 
-const form = document.querySelector('[data-testid="entity-form"]');
+const form = document.querySelector('[data-testid="book-form"]');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const data = new FormData(form);
-  let book = {
+  const book = {
     title: data.get('title'),
     author: data.get('author'),
     year: Number(data.get('year')),

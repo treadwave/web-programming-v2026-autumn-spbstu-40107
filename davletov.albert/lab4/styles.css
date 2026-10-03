@@ -20,7 +20,6 @@ h1 {
   font-size: 28px;
 }
 
-/* Формы: библиотеки и книги */
 form {
   display: flex;
   flex-wrap: wrap;
@@ -73,19 +72,6 @@ button:hover {
   background: #1f57c9;
 }
 
-/* Сообщение об ошибке: скрыто, пока пустое */
-.error {
-  flex-basis: 100%;
-  margin: 0;
-  font-size: 14px;
-  color: #c62828;
-}
-
-.error:empty {
-  display: none;
-}
-
-/* Список библиотек */
 [data-testid='entity-list'] {
   display: flex;
   flex-direction: column;
@@ -117,8 +103,7 @@ button:hover {
   background: #c93c40;
 }
 
-/* Карточка книги */
-[data-testid='entity-card'] {
+.book-card {
   flex-basis: 100%;
   padding: 12px;
   background: #f8f9fb;
@@ -126,18 +111,18 @@ button:hover {
   border-radius: 8px;
 }
 
-[data-testid='entity-card'] h3 {
+.book-card h3 {
   margin: 0 0 6px;
   font-size: 16px;
 }
 
-[data-testid='entity-card'] p {
+.book-card p {
   margin: 2px 0;
   font-size: 14px;
   color: #57606a;
 }
 
-[data-testid='delete-entity'] {
+[data-testid='delete-book'] {
   margin-top: 8px;
   padding: 4px 12px;
   font-size: 14px;
@@ -146,6 +131,6 @@ button:hover {
   border: 1px solid #e8b4b4;
 }
 
-[data-testid='delete-entity']:hover {
+[data-testid='delete-book']:hover {
   background: #fdecec;
 }
