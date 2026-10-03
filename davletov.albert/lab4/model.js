@@ -29,7 +29,7 @@ export function groupBooksByGenre(libs) {
   return map;
 }
 
-export function uniqueList(libs) {
+export function getUniqueAuthors(libs) {
   const set = new Set();
   const flatBooks = libs.flatMap((lib) => lib.books);
 
@@ -40,14 +40,14 @@ export function uniqueList(libs) {
   return Array.from(set);
 }
 
-export function groupByYear(libs) {
+export function groupBooksByYear(libs) {
   const flatBooks = libs.flatMap((lib) => lib.books);
   const map = Map.groupBy(flatBooks, (book) => book.year);
 
   return map;
 }
 
-export function uniqueYears(libs) {
+export function getUniqueYears(libs) {
   const set = new Set();
   const flatBooks = libs.flatMap((lib) => lib.books);
 
@@ -58,7 +58,7 @@ export function uniqueYears(libs) {
   return Array.from(set);
 }
 
-export function specificBooksOfAuthor(libs, author) {
+export function findBooksByAuthor(libs, author) {
   const booksOfAuthor = [];
   const flatBooks = libs.flatMap((lib) => lib.books);
 
