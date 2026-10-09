@@ -108,17 +108,20 @@ libForm.addEventListener('submit', (event) => {
 });
 
 function removeLib(lib) {
-  if (libs.length === 1) {
-    return;
-  }
-
   return new Promise((resolve) => {
     setTimeout(() => {
-      const index = libs.indexOf(lib);
-      libs.splice(index, 1);
-      save();
-      render();
-      resolve();
+      if (libs.length === 1) {
+        resolve();
+      } else {
+        const index = libs.indexOf(lib);
+        if (index !== -1) {
+          libs.splice(index, 1);
+        }
+
+        save();
+        render();
+        resolve();
+      }
     }, 300);
   });
 }
