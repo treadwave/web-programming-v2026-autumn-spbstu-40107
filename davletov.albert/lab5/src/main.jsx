@@ -90,26 +90,26 @@ function BookCard({book}) {
 function App() {
   let booksSorted;
 
-  const [sortState, setSort] = useState('');
+  const [sortState, setSort] = useState('не задано');
   const [clickSource, setClickSource] = useState('');
 
   function sort(button) {
     if (button !== clickSource) {
       setSort('↑');
     } else if (button === clickSource) {
-      if (sortState === '') {
+      if (sortState === 'не задано') {
         setSort('↑');
       } else if (sortState === '↑') {
         setSort('↓');
       } else if (sortState === '↓') {
-        setSort('');
+        setSort('не задано');
       }
     }
 
     setClickSource(button);
   }
 
-  if (sortState === '') {
+  if (sortState === 'не задано') {
     booksSorted = books;
   } else if (sortState === '↑') {
     if (clickSource === 'title') {
@@ -145,7 +145,9 @@ function App() {
     <div>
       <button
         type="button"
-        className={clickSource === 'title' && sortState !== '' ? 'active' : ''}
+        className={
+          clickSource === 'title' && sortState !== 'не задано' ? 'active' : ''
+        }
         data-testid="sort-title"
         onClick={() => sort('title')}
       >
@@ -154,7 +156,9 @@ function App() {
 
       <button
         type="button"
-        className={clickSource === 'price' && sortState !== '' ? 'active' : ''}
+        className={
+          clickSource === 'price' && sortState !== 'не задано' ? 'active' : ''
+        }
         data-testid="sort-price"
         onClick={() => sort('price')}
       >
@@ -163,14 +167,16 @@ function App() {
 
       <button
         type="button"
-        className={clickSource === 'rating' && sortState !== '' ? 'active' : ''}
+        className={
+          clickSource === 'rating' && sortState !== 'не задано' ? 'active' : ''
+        }
         data-testid="sort-rating"
         onClick={() => sort('rating')}
       >
         Рейтинг
       </button>
 
-      <span data-testid="sort-direction"> {sortState}</span>
+      <span data-testid="sort-direction"> Порядок сортировки: {sortState}</span>
       <section className="books">
         {booksSorted.map((book) => (
           <BookCard book={book} key={book.id} />
