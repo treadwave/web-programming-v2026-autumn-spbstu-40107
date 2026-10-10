@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+form {
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+}
+
+form p {
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select {
+  margin-bottom: 20px;
+  padding: 6px;
+  width: 100%;
+}
+
+button {
+  background-color: #008000;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
